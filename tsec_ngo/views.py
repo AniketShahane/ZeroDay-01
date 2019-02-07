@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from donor.models import Donor, RevenueAdded
 from django.core.mail import EmailMessage
-
+import random
+import json
+from child.models import Child
 
 def home(request):
     return render(request, 'index.html')
@@ -33,3 +35,17 @@ def login(request):
         else: 
             return redirect('login')
     return render(request, 'login.html')
+
+def addChild(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        village = request.POST['village']
+        ambitions = request.POST['ambitions']
+        year = random.choices((2015, 2016,2017,2018))
+        grades = random.randint(50,100)
+        grade = json.dumps({year[0]: grades})
+        mentor = random.choices(('Kavita Patil', 'Diya Patil', 'Ramesh Sahu'))[0]
+        newChild = Child(name=name, village=village, ambition=ambitions, grades=grade, mentor=mentor)
+        newChild.save()
+        return redirect('children')
+        

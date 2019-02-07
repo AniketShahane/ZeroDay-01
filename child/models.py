@@ -7,6 +7,8 @@ class Child(models.Model):
     grades = models.TextField()
     ambition = models.TextField()
     joined = models.DateTimeField(default=timezone.now())
+    mentor = models.CharField(max_length=255, default='Mahesh Singh')
+    scholarships = models.CharField(max_length=20, default='360')
 
     def __str__(self):
         return self.name
