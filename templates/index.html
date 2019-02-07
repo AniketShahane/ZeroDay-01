@@ -79,7 +79,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Special Winings</h2>
+          <h2 class="section-heading text-uppercase">Special Stories</h2>
           <h3 class="section-subheading text-muted">Some stories just motivate us to make valuable contributions and also keep us going...</h3>
         </div>
       </div>
@@ -330,25 +330,26 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <form id="contactForm" name="sentMessage" novalidate="novalidate">
+          <form name="sentMessage" novalidate="novalidate" method="POST" action="{% url 'giveFeedback' %}">
+            {% csrf_token %}
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
+                  <input class="form-control" id="name" type="text" name="name" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address.">
+                  <input class="form-control" id="email" name="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address.">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number.">
+                  <input class="form-control" id="phone" name="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <textarea class="form-control" id="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                  <textarea class="form-control" id="message" name="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -459,7 +460,7 @@ During one such training, Shreeshant had the opportunity to audition for a Kanna
                 <!-- Project Details Go Here -->
                 <h2 class="text-uppercase">NOTHING CAN STOP YOU</h2>
                 <p class="item-intro text-muted">Promising Steps Towards A New Milestone</p>
-                <img class="img-fluid d-block mx-auto" src="img/i(6).png" alt="">
+                <img class="img-fluid d-block mx-auto" src="{% static 'img/i(6).png' %}" alt="">
                 <p>  Ganesh had delayed milestones early on in his childhood and was later diagnosed as mentally retarded with 75 % level disability. He was unruly, screamed a lot, broke things in the house and threw frequent tantrums. He was unable to speak or respond to even simple instructions. His mother went through a very difficult life with no support or money. With Ganesh requiring constant care and monitoring, she could not take on any job since there was no one to look after Ganesh. Having heard about ZeroTear from her neighbor, she approached the NGO for employment as a domestic maid hoping she would be able to work and take care of Ganesh at the same time. Not only was she given the job, she was also offered training as a caregiver and Ganesh was admitted in the Centre. This was a major turning point for both Ganesh and his mother.
 
 Ganesh was provided with special education and therapy and has shown remarkable improvement ever since. He speaks well and is physically very active now. With ZeroTear’s help, he was able to get a Disability Pension from the government. His mother is paid a decent salary with food and clothing for both of them and they are now able to live peacefully and comfortably.</p>
@@ -495,7 +496,7 @@ Ganesh was provided with special education and therapy and has shown remarkable 
                 <!-- Project Details Go Here -->
                 <h2 class="text-uppercase">HOPE WINS</h2>
                 <p class="item-intro text-muted">Where there is a way there is a way...Never Give Up</p>
-                <img class="img-fluid d-block mx-auto" src="img/i(7).jpg" alt="">
+                <img class="img-fluid d-block mx-auto" src="{% static 'img/i(7).jpg' %}" alt="">
                 <p>Aakruti was just ten years old when her parents died of severe illness. Due to poverty they were unable to go to the local hospital. The little girl was left alone in this unfamiliar world with her younger sister.
 Soon they moved to their relatives’ house but the children were badly treated by them. Aakruti took her younger sister and started living on the street.
 After two years Aakruti’s maternal aunt came to know about their situation and brought the siblings with her. The aunt worked as bonded labour and earned less than Rupees 50 per day. Despite her willingness to support children, poverty forced her to look out for alternate ways.

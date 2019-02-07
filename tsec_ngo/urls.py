@@ -23,4 +23,5 @@ urlpatterns = [
     path('donator/',views.donate,name='donate'),
     path('login/', views.login, name='login'),
     path('addChild/', views.addChild, name='addChild'),
+    path('giveFeedback/', views.giveFeedback, name='giveFeedback'),
 ]

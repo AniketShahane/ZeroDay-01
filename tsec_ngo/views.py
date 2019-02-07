@@ -4,6 +4,9 @@ from django.core.mail import EmailMessage
 import random
 import json
 from child.models import Child
+from feedback.models import Feedback
+
+
 
 def home(request):
     return render(request, 'index.html')
@@ -21,7 +24,9 @@ def donate(request):
         addRev.principal_amount = latestAddRev + new_donor.amount 
         addRev.donor_id = new_donor
         addRev.save()
+        
         email=EmailMessage('Thank you for donating','We have recieved your donation, thank you for contributing towards our family. Every helping hand helps our family get stronger. Here is a receipt for your Donation. Here are your transaction details :: Donated amount :'+amount+'From : '+name+' .To : HackZeroDay@1234'+' .Location : '+area,to=[emailid])
+        
         email.send()
         return redirect('home')
     
@@ -48,4 +53,14 @@ def addChild(request):
         newChild = Child(name=name, village=village, ambition=ambitions, grades=grade, mentor=mentor)
         newChild.save()
         return redirect('children')
+
+def giveFeedback(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        message = request.POST['message']
+        feed = Feedback(name=name, email=email, phone=phone, message=message)
+        feed.save()
+        return redirect('home')
         
