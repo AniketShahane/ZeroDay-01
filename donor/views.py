@@ -12,7 +12,7 @@ def donors(request):
     return render(request,'admin/tables.html',content)
 
 def admin_panel(request):
-    latestRev = RevenueAdded.objects.all().order_by('-time')[0].principal_amount
+    latestRev = RevenueAdded.objects.all().order_by('-principal_amount')[0].principal_amount
     donors = Donor.objects.all().count()
     children = Child.objects.all().count()
     topDonors = Donor.objects.all().order_by('-amount')[:4]
